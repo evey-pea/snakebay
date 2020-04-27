@@ -1,7 +1,6 @@
 class ListingsController < ApplicationController
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-
     def index
         @listings = Listing.all
     end
@@ -11,7 +10,7 @@ class ListingsController < ApplicationController
     end
 
     def new
-        set_breeds_and_sexes()
+        set_breeds_and_sexes
         @listing = Listing.new
     end
 
@@ -19,15 +18,16 @@ class ListingsController < ApplicationController
         #finish logic for creating a record
         @listing = Listing.create(listing_params)
         if @listing.errors.any?
-            set_breeds_and_sexes()
+            set_breeds_and_sexes
             render "new"
         else 
             redirect_to listings_path
         end
-
     end
 
     def edit
+        set_breeds_and_sexes
+        @listing = Listing.new
     end
 
     def update

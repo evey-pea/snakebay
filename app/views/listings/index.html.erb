@@ -1,12 +1,12 @@
 <h1>Snake Listings</h1>
 
 <% for listing in @listings %>
-<div class="card">
-  <%= image_tag listing.picture if listing.picture.attached? %>
-  <h3><%= listing.title %></h3>
-  <p>Location: <%= "#{listing.city}, #{listing.state}" %></p>
-  <p>Date Of Birth: <%= listing.date_of_birth %></p>
-  <p>Price: <%= listing.price %></p>
-  <%= link_to "edit", edit_listing_path(listing.id) %>
-</div>
+  <div class="card">
+    <%= image_tag listing.picture if listing.picture.attached? %>
+    <h3><%= listing.title %></h3>
+    <p>Location: <%= "#{listing.city}, #{listing.state}" %></p>
+    <p>Date Of Birth: <%= listing.date_of_birth %></p>
+    <p>Price: <%= listing.price %></p>
+    <%= link_to "edit", edit_listing_path(listing.id) %>
+  </div>
 <% end %>

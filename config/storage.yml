@@ -14,6 +14,7 @@ amazon:
   region: ap-southeast-2
   bucket: snakebay-evey-pea
 
+
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
