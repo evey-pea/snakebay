@@ -1,0 +1,52 @@
+<%= form_with model: @listing do |form|  %>
+    <div class="title-field">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>
+    <div>
+        <%= form.label :breed_id %>
+        <%= form.select(:breed_id, @breeds.map{|b| [b.name, b.id]} ) %>
+    </div>
+    <div>
+        <% @sexes.each do |option| %>
+            <%= form.radio_button :sex, option %>
+            <%= form.label option %>
+        <% end %>
+
+    </div>
+    <div>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </div>
+    <div>
+        <%= form.label :price %>
+        <%= form.number_field :price, min: 0 %>
+    </div>
+    <div>
+        <%= form.label :deposit %>
+        <%= form.number_field :deposit, min: 0 %>
+    </div>
+    <div>
+        <%= form.label :city %>
+        <%= form.text_field :city %>
+    </div>
+    <div>
+        <%= form.label :state %>
+        <%= form.text_field :state %>
+    </div>
+    <div>
+        <%= form.label :date_of_birth %>
+        <%= form.date_field :date_of_birth %>
+    </div>
+    <div>
+        <%= form.label :diet %>
+        <%= form.text_field :diet %>
+    </div>
+    <div>
+        <%= form.label :picture %> <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+
+<% end %>
