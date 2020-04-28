@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
     def home
-        render plain: "home page"
+        redirect_to listings_path
     end
 
     def not_found
