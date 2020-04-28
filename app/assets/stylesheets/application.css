@@ -16,7 +16,8 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2vh;
-    
+    color: #ffffff;
+    background-color: darkcyan;
 }
 
 a {
@@ -27,14 +28,35 @@ a:visited {
     color: #ffffff;
 }
 
-div.card {
+.light-round-box {
     background-color: cadetblue;
-    width: 20vw;
     text-align: center;
     padding: 2em;
+    margin: 2em;
     border-radius: 2em;
     box-shadow: cadetblue, 1em, 1em;
     color: #ffffff;
+}
+
+nav {
+    display: contents;
+    justify-items: right;
+}
+
+nav li {
+    list-style-type: none;
+    max-width: fit-content;
+}
+div.listing_list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+}
+
+div.card {
+    background-color: cadetblue;
+    width: 20vw;
 }
 
 div.card h3 {
@@ -44,4 +66,10 @@ div.card h3 {
 div.card img {
     width: 100%;
     border-radius: 2em;
+}
+
+div.form {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
 }

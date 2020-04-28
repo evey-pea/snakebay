@@ -1,4 +1,4 @@
-<h1>New Listing</h1>
+<%= render "/shared/listing_header" %>
 
 <% if @listing.errors.any? %>
     <% @listing.errors.full_messages.each do |message| %>
@@ -6,6 +6,6 @@
     <% end %>
 <% end %>
 
-
-<%= render "/shared/form" %>
-
+<div class="card light-round-box">
+    <%= render "/shared/form" %>
+</div>

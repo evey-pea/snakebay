@@ -3,15 +3,17 @@ class ListingsController < ApplicationController
 
     def index
         @listings = Listing.all
+        @heading = "Snake Bay"
     end
 
     def show
-
+        @heading = "Listing Details"
     end
 
     def new
         set_breeds_and_sexes
         @listing = Listing.new
+        @heading = "New Listing"
     end
 
     def create
@@ -26,12 +28,15 @@ class ListingsController < ApplicationController
     end
 
     def edit
-        set_breeds_and_sexes
-        @listing = Listing.new
+        set_breeds_and_sexes()
+        p @listing
+        @heading = "Edit Listing"
     end
 
     def update
         #finsih logic for updating the record
+        @listing.update(listing_params)
+        redirect_to listings_path
     end
 
     def destroy
