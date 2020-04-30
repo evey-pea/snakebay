@@ -4,6 +4,26 @@
 <div class="main_item_view">
     <div class="light round-box card-large">
         <%= image_tag @listing.picture if @listing.picture.attached? %>
-    </div>
+        
+        <h2>Description</h2>
+        <p><%= @listing.description %></p>
 
+        <button data-stripe="payment">Pay Deposit <%= number_to_currency(@listing.deposit) %></button>
+    </div>
 </div>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+  document
+    .querySelector("[data-stripe='payment']")
+    .addEventListener("click", () => {
+      const stripe = Stripe(
+        "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+      );
+
+      stripe.redirectToCheckout({
+        sessionId: "<%= @session_id %>"
+      });
+    });
+</script>
