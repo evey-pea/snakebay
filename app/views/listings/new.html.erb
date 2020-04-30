@@ -1,11 +1,13 @@
 <%= render "/shared/listing_header" %>
 
-<% if @listing.errors.any? %>
-    <% @listing.errors.full_messages.each do |message| %>
-        <li style="color: red"><%= message %></li>
+<div class="main_item_view">
+    <% if @listing.errors.any? %>
+        <% @listing.errors.full_messages.each do |message| %>
+            <li style="color: red"><%= message %></li>
+        <% end %>
     <% end %>
-<% end %>
 
-<div class="card light-round-box">
-    <%= render "/shared/form" %>
+    <div class="card light round-box">
+        <%= render "/shared/form" %>
+    </div>
 </div>

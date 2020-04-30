@@ -11,13 +11,20 @@
 
   <body>
     <h1>Snake Bay</h1>
-    <% if user_signed_in? %>
-    <%= link_to "logout", destroy_user_session_path, method: :delete %>
-<% else %>
-    <%= link_to "login", new_user_session_path %>
-<% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <nav>
+      <% if @heading != "Snakes For Sale" %>
+        <a href= <%= listings_path %>>
+          <div class="card light round-box">Back</div>
+        </a>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= button_to "Add New Listing", new_listing_path, :method => "get", :class => "light round-box"%>
+        <%= button_to "Logout", destroy_user_session_path(@user_current), :method => "delete", :class => "light round-box"%>
+      <% end %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

@@ -1,12 +1,1 @@
 <h1><%= @heading %></h1>
-
-<nav>
-    <li class="light-round-box">
-        <%= link_to 'Add New Listing', new_listing_path %>
-    </li>
-    <% if @heading != "Snake Bay" %>
-        <li class="card light-round-box">
-            <%= link_to 'Back', listings_path %>
-        </li>
-    <% end %>
-<nav>

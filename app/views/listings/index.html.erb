@@ -1,14 +1,19 @@
 <%= render "/shared/listing_header" %>
 
-<div class="listing_list">
+<div class="main_item_view">
   <% for listing in @listings %>
-    <div class="card light-round-box">
+    <div class="card light round-box">
       <%= image_tag listing.picture if listing.picture.attached? %>
       <h3><%= listing.title %></h3>
       <p>Location: <%= "#{listing.city}, #{listing.state}" %></p>
       <p>Date Of Birth: <%= listing.date_of_birth %></p>
       <p>Price: <%= listing.price %></p>
-      <%= link_to "edit", edit_listing_path(listing.id) if current_user.id == listing.id %>
+      <a href= <%= listing_path(listing.id) %> >
+        <div class="dark round-box">Show</div>
+      </a>
+      <a href= <%= edit_listing_path(listing.id) if current_user.id == listing.user_id %>>
+        <div class="dark round-box">Edit</div>
+      </a>
     </div>
   <% end %>
 </div>

@@ -13,6 +13,57 @@
  *= require_tree .
  *= require_self
  */
+.light {
+    color: #ffffff;
+    background-color: cadetblue;
+}
+ 
+.dark {
+    color: cadetblue;
+    background-color: #ffffff;
+}
+
+div.dark > a {
+    color: cadetblue;
+}
+.round-box {
+     text-align: center;
+     padding: 0.6em;
+     margin: 1em;
+     border-radius: 2em;
+     box-shadow: cadetblue, 1em, 1em;
+}
+
+.card {
+    background-color: cadetblue;
+    width: 20vw;
+}
+
+.card-large {
+    background-color: cadetblue;
+    width: 70vw;
+}
+
+.card img, .card-large img {
+    width: 100%;
+    border-radius: 2em;
+}
+
+.card h3, .card-large h3 {
+    font-weight: 600;
+    font-size: 2em;
+}
+
+.card p {
+    display: block;
+}
+
+.errors {
+    color: red;
+    font-weight: bold;
+    background-color: ivory;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2vh;
@@ -28,45 +79,25 @@ a:visited {
     color: #ffffff;
 }
 
-.light-round-box {
-    background-color: cadetblue;
-    text-align: center;
-    padding: 2em;
-    margin: 2em;
-    border-radius: 2em;
-    box-shadow: cadetblue, 1em, 1em;
-    color: #ffffff;
-}
 
 nav {
-    display: contents;
-    justify-items: right;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
 }
 
-nav li {
+li {
     list-style-type: none;
-    max-width: fit-content;
 }
-div.listing_list {
+
+div.main_item_view {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
     align-content: flex-start;
 }
 
-div.card {
-    background-color: cadetblue;
-    width: 20vw;
-}
-
-div.card h3 {
-    font-weight: 600;
-    font-size: 2em;
-}
-div.card img {
-    width: 100%;
-    border-radius: 2em;
-}
 
 div.form {
     display: flex;

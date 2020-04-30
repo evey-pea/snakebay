@@ -1,2 +1,9 @@
 <%= render "/shared/listing_header" %>
 
+
+<div class="main_item_view">
+    <div class="light round-box card-large">
+        <%= image_tag @listing.picture if @listing.picture.attached? %>
+    </div>
+
+</div>
