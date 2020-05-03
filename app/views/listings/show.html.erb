@@ -1,29 +1,49 @@
 <%= render "/shared/listing_header" %>
 
-
 <div class="main_item_view">
     <div class="light round-box card-large">
         <%= image_tag @listing.picture if @listing.picture.attached? %>
         
         <h2>Description</h2>
         <p><%= @listing.description %></p>
-
-        <button data-stripe="payment">Pay Deposit <%= number_to_currency(@listing.deposit) %></button>
+        <p>Location: <%= "#{@listing.city}, #{@listing.state}" %></p>
+        <p>Date Of Birth: <%= @listing.date_of_birth %></p>
+        <p>Diet: <%= @listing.diet %></p>
+        <p>Price: <%= @listing.price %></p>
+        <% if current_user.id != @listing.user_id %>
+            <button data-stripe="payment" class="dark round-box">
+                Pay Deposit <%= number_to_currency(@listing.deposit) %>
+            </button> 
+            <button class="dark round-box"  data-stripe="payment-buy-now">
+                Buy Now <%= number_to_currency(@listing.price)%>
+            </button>
+        <% end %>
+        <%  if current_user.id == @listing.user_id %>
+        <a href= <%= edit_listing_path(@listing.id)%> >
+          <div class="dark round-box">Edit</div>
+        </a>
+      <% end %> 
     </div>
 </div>
 
 <script src="https://js.stripe.com/v3/"></script>
 
 <script>
-  document
-    .querySelector("[data-stripe='payment']")
-    .addEventListener("click", () => {
-      const stripe = Stripe(
-        "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
-      );
+    function listenToButton(dataStripeType, sessionId){
+        document
+            .querySelector(`[data-stripe='${dataStripeType}']`)
+            .addEventListener("click", () => {
+                const stripe = Stripe(
+                    "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+                );
+            
+            console.log(`SessionID: ${sessionId}`)
+            stripe.redirectToCheckout({
+                sessionId: sessionId
+                });
+            });
+    }
 
-      stripe.redirectToCheckout({
-        sessionId: "<%= @session_id %>"
-      });
-    });
+    listenToButton("payment", "<%= @session_id %>")
+    listenToButton("payment-buy-now", "<%= @session_buy_now_id %>")
 </script>

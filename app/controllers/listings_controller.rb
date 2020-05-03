@@ -7,32 +7,34 @@ class ListingsController < ApplicationController
         @listings = Listing.all
         @heading = "Snakes For Sale"
     end
-
-    def show
-        @heading = "Listing Details"
-
-        # Required for Strip checkout 
+    def generate_stripe_session(amount, is_deposit)
         session = Stripe::Checkout::Session.create(
             payment_method_types: ['card'],
             customer_email: current_user.email,
             line_items: [{
                 name: @listing.title,
                 description: @listing.description,
-                amount: @listing.deposit * 100,
+                amount: amount,
                 currency: 'aud',
                 quantity: 1,
             }],
             payment_intent_data: {
-                metadata: {
-                    user_id: current_user.id,
-                    listing_id: @listing.id
+            metadata: {
+                user_id: current_user.id,
+                listing_id: @listing.id,
+                is_deposit: true
                 }
             },
             success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{@listing.id}",
             cancel_url: "#{root_url}listings"
         )
-    
-        @session_id = session.id
+        return session.id
+    end
+        
+    def show
+        @heading = "Listing Details"
+        @session_id = generate_stripe_session(@listing.deposit * 100, true)
+        @session_buy_now_id = generate_stripe_session(@listing.price * 100, false)
     end
 
     def new

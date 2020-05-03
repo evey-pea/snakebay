@@ -28,7 +28,7 @@ div.dark > a {
 }
 .round-box {
      text-align: center;
-     padding: 0.6em;
+     padding: 1em;
      margin: 1em;
      border-radius: 2em;
      box-shadow: cadetblue, 1em, 1em;
@@ -36,7 +36,8 @@ div.dark > a {
 
 .card {
     background-color: cadetblue;
-    width: 20vw;
+    width: 18vw;
+    min-width: 250px;
 }
 
 .card-large {
@@ -67,12 +68,14 @@ div.dark > a {
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2vh;
+    text-align: center;
     color: #ffffff;
     background-color: darkcyan;
 }
 
 a {
     text-decoration: none;
+    min-width: 15ch;
 }
 
 a:visited {
@@ -83,8 +86,9 @@ a:visited {
 nav {
     width: 100%;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
 
 li {

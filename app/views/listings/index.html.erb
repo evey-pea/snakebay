@@ -11,9 +11,11 @@
       <a href= <%= listing_path(listing.id) %> >
         <div class="dark round-box">Show</div>
       </a>
-      <a href= <%= edit_listing_path(listing.id) if current_user.id == listing.user_id %>>
-        <div class="dark round-box">Edit</div>
-      </a>
+      <%  if current_user.id == listing.user_id %>
+        <a href= <%= edit_listing_path(listing.id)%> >
+          <div class="dark round-box">Edit</div>
+        </a>
+      <% end %>
     </div>
   <% end %>
 </div>
